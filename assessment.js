@@ -4,6 +4,7 @@
 
 
 // 1. Write a function called helloWorld that returns the string 'Hello World!'.
+const helloWorld = () => 'Hello World'
 
 // 2. Write a function called lambdaSchool that has a single parameter called num.
 //      num will be a positive integer.
@@ -16,6 +17,13 @@
 //              lambdaSchool(15); // returns 'Lambda School'
 //              lambdaSchool(8); // returns 8
 
+const lambdaSchool = num =>{
+  return num % 3 === 0 && num % 5 === 0 ? 'Lambda School' :
+  num % 3 === 0 ? 'Lambda' :
+  num % 5 === 0 ? 'School' :
+  num
+}
+
 // 3. Write a function called longestString that has a single parameter called strs.
 //      strs will be an array of strings.
 //      Return the longest string that is in strs.
@@ -24,6 +32,13 @@
 //      Example:
 //              longestString(['hi', 'hello', 'ni hao', 'guten tag']); // returns 'guten tag'
 //              longestString(['JavaScript', 'HTML', 'CSS']); // returns 'JavaScript'
+
+const longestString = strs =>{
+  return strs.reduce((longestString, currentString)=>{
+    if(longestString.length < currentString.length) longestString = currentString
+    return longestString
+  })
+}
 
 // 4. Write a function called computeUserAverageAge that has a single parameter called users
 //      users is an array of user objects.
@@ -43,6 +58,12 @@
 //                age: 81,
 //              }];
 //              computeUserAverage(users); // returns 62 (This number is rounded up from 61.6666)
+
+const computeUserAverageAge = users =>{
+  const answer = users.map(user=> user.age)
+  .reduce((sum, currAge)=> sum+=currAge) / users.length
+  return Math.round(answer)
+}
 
 
 module.exports = {
